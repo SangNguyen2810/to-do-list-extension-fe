@@ -1,0 +1,6 @@
+
+export type THEME = THEME_VALUE.DARK | THEME_VALUE.LIGHT
+export enum THEME_VALUE {
+  DARK = 'DARK',
+  LIGHT = 'LIGHT',
+}

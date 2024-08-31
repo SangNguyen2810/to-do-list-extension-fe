@@ -11,3 +11,18 @@ export type Tag = {
 	title: string,
 	color?: string,
 }
+
+interface GoogleAccounts {
+	id: {
+		initialize: (options: { client_id: string; callback: (response: GoogleCredentialResponse) => void }) => void;
+		renderButton: (element: HTMLElement | null, options: { theme: string; size: string }) => void;
+	};
+}
+
+interface GoogleCredentialResponse {
+	credential: string;
+}
+
+interface Window {
+	google: GoogleAccounts;
+}

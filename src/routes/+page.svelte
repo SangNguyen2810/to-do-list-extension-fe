@@ -1,3 +1,24 @@
+<!-- @format -->
+<script lang="ts">
+	import { onMount } from "svelte";
+	import { isAuthenticated, checkAuth } from "../stores/authStore";
+	import { goto } from "$app/navigation";
 
-<main class="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+	let authenticated: boolean;
+
+	onMount(async () => {
+		await checkAuth();
+		isAuthenticated.subscribe((value) => {
+			authenticated = value;
+			if (authenticated) {
+				goto("/dashboard"); // Redirect to dashboard if logged in
+			} else {
+				goto("/login"); // Redirect to login if not logged in
+			}
+		});
+	});
+</script>
+<main>
+	<slot></slot>
+	<!-- Page content will be rendered here -->
 </main>
